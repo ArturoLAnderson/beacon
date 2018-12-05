@@ -1,4 +1,4 @@
-__Release 0.1.0__
+__Release 0.1.1__
 
 [macOS](https://github.com/ArturoLAnderson/beacon/releases/download/0.1.1/beacon-darwin-x64.zip), 
 [Win32](https://github.com/ArturoLAnderson/beacon/releases/download/0.1.1/beacon-win32-ia32.zip), 
