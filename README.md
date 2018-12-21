@@ -1,6 +1,7 @@
 __Release 0.1.3__
 
 [macOS](https://github.com/ArturoLAnderson/beacon/releases/download/0.1.3/beacon-darwin-x64.zip), 
+[Linux](https://github.com/ArturoLAnderson/beacon/releases/download/0.1.3/beacon-linux-x64.zip),
 [Win32](https://github.com/ArturoLAnderson/beacon/releases/download/0.1.3/beacon-win32-ia32.zip), 
 [Win64](https://github.com/ArturoLAnderson/beacon/releases/download/0.1.3/beacon-win32-x64.zip)
 
