@@ -1,0 +1,176 @@
+.chat-modal,
+.chat-modal * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 10000;
+  width: 100%;
+  text-align: center;
+}
+
+.chat-modal__wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 30px;
+  height: 100%;
+  background-color: #fff;
+}
+
+.chat-modal__close {
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  font-weight: normal;
+  font-size: 20px;
+  font-size: 27px;
+}
+
+.chat-modal__bd {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.chat-modal__bd img {
+  max-width: 100%;
+}
+
+.message__group__talks {
+  padding: 20px;
+}
+
+.message__group__talks {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 0;
+  border-top: 1px solid #d5d5d5;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.message__group__talks > .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.message__group__talks > .inner .talk__item--right {
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.message__group__talks .talk__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+  padding: 0;
+  border: 0;
+}
+
+.talk__item,
+.comment__item {
+  padding: 15px 0 10px;
+  border-top: 1px solid #edf0f5;
+}
+
+.message__group__talks .nickname {
+  height: 20px;
+  color: #a3a3a3;
+  line-height: 20px;
+}
+
+.message__group__talks > .inner .talk__item--right .content {
+  background: #92e649;
+}
+
+.message__group__talks .content {
+  display: inline-block;
+  overflow: hidden;
+  padding: 12px;
+  padding-left: 8px;
+  max-width: 320px;
+  border-radius: 5px;
+  background: #fff;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.message__group__talks .talk__item .content img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.message__group__talks .avatar {
+  display: inline-block;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.message__group__talks .avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.message__group__editor {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.editor__toolbar {
+  padding: 5px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.editor__toolbar__item {
+  display: inline-block;
+  padding: 5px;
+  font-size: 20px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.message__group__editor textarea,
+.message__group__editor .message__group__textarea {
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 10px 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  min-height: 100px;
+  width: 100%;
+  height: 100px;
+  border: 0;
+  background: none;
+  word-break: break-word;
+  font-size: 14px;
+  resize: none;
+}

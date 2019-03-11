@@ -1,0 +1,20 @@
+{
+  "name": "beacon",
+  "version": "0.0.1",
+  "description": "beacon electron",
+  "main": "index.js",
+  "scripts": {
+    "electron:start": "electron ./"
+  },
+  "dependencies": {
+    "better-sqlite3": "^4.1.4",
+    "nano-time": "^1.0.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "beacon",
+    "beacon-electron"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Beacon</title>
+  <style>
+    .prod {
+      padding-bottom: 0;
+    }
+
+    .prod #debug {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="prod">
+  <div class="app">
+    <div class="app__wrapper">
+      <div class="app__auth">
+        <div class="app__auth__login uic-hide">
+          <div class="form-group">
+            <span class="form-group__addon">nickname:</span>
+            <select class="" name="nickname"></select>
+          </div>
+
+          <div class="form-group">
+            <span class="form-group__addon">password:</span>
+            <input type="password" class="form-group__item" name="password" placeholder="passowrd">
+          </div>
+          <a href="javascript:;" class="btn btn--primary btn--block" id="form-login">Login</a>
+        </div>
+        <hr class="app__auth__hr uic-hide">
+        <div class="app__auth__register">
+          <div class="form-group">
+            <span class="form-group__addon">nickname:</span>
+            <input type="text" class="form-group__item" name="nickname" autocomplete="nickname" placeholder="1 ~ 30 characters">
+          </div>
+          <div class="form-group">
+            <span class="form-group__addon">password:</span>
+            <input type="password" class="form-group__item" name="password" placeholder="passowrd">
+          </div>
+
+          <div class="form-group">
+            <span class="form-group__addon">password:</span>
+            <input type="password" class="form-group__item" name="password2" , placeholder="passowrd again">
+          </div>
+          <a href="javascript:;" class="btn btn--primary btn--block" id="form-register">SignUp</a>
+        </div>
+        <a href="javascript:;" id="btn--control-show-root-dir">open app data folder</a>
+      </div>
+      <div class="app__logged hide">
+        <div class="app__sidebar">
+          <div id="apptest hide"></div>
+          <div class="app__sidebar__bd">
+            <div class="user-info">
+              <img />
+            </div>
+            <div class="control">
+              <a href="javascript:;" id="btn--show-message-panel" class="control__item tab__nav__item btn--badge-dot"
+                data-target="#tab__message">
+                <i class="iconfont icon-message"></i>
+                <span class="badge-dot hide"></span>
+              </a>
+              <a href="javascript:;" class="control__item active tab__nav__item" data-target="#tab__contacts">
+                <i class="iconfont icon-contacts"></i>
+              </a>
+
+              <a href="javascript:;" class="control__item tab__nav__item" data-target="#tab__upload-files">
+                <i class="iconfont icon-cloud-upload"></i>
+              </a>
+              <a href="javascript:;" id="btn--show-download-panel" class="control__item tab__nav__item btn--badge-dot"
+                data-target="#tab__download-files">
+                <i class="iconfont icon-cloud-download"></i>
+                <span class="badge-dot hide"></span>
+              </a>
+              <a href="javascript:;" id="btn--show-notice-modal" class="control__item btn--badge-dot">
+                <i class="iconfont icon-notice-bell"></i>
+                <span class="badge-dot hide"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="app__main">
+          <div id="tab__message" class="tab__content__pane">
+            <div class="app__main__message">
+              <div class="app__main__lf">
+                <div class="groups__bd">
+
+                </div>
+              </div>
+              <div class="app__main__rt">
+              </div>
+            </div>
+          </div>
+          <div id="tab__contacts" class="tab__content__pane show">
+            <div class="app__main__contacts">
+              <div class="app__main__lf">
+                <div class="contacts__hd">
+                  <a href="javascript:;" id="btn--add-contact" class=" btn btn--link">Add Contact</a>
+                </div>
+                <div class="contacts__bd">
+                  <div id="tab__contact--contact">
+                  </div>
+                </div>
+              </div>
+              <div class="app__main__rt">
+              </div>
+            </div>
+          </div>
+          <div id="tab__upload-files" class="tab__content__pane">
+            <div class="app__files__wrapper">
+              <a href="javascript:;" class="btn btn--primary" id="btn--control-share">
+                Share Files
+              </a>
+              <h4 style="border-bottom: 1px #eee solid; height: 29px;">My Sharing Files</h4>
+              <table class="">
+                <thead>
+                  <tr class="">
+                    <th>user</th>
+                    <th>filename</th>
+                    <th>size(KB)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="tab__download-files" class="tab__content__pane">
+            <div class="form-group">
+              <span class="form-group__addon">Storage directory:</span>
+              <input type="text" class="form-group__item" name="download-dir" readonly>
+              <span class="form-group__addon">
+                <a href="javascript:;" class="btn btn--link btn--control-open-download-dir">Open</a>
+              </span>
+            </div>
+            <div class="form-group">
+              <span class="form-group__addon">Download slice size (KB):</span>
+              <input type="text" class="form-group__item download-slice-size" value="10" disabled=true />
+              <span class="form-group__addon">
+                  <a href="javascript:;" class="btn btn--link btn--control-set-slice-size">Set</a>
+              </span>
+            </div>
+            <nav class="tab__theme--main">
+              <div class="tab__navs">
+                <a href="javascript:;" data-target="#tab__download--loading" class="tab__nav__item active" data-toggle="tab">downloading</a>
+                <a href="javascript:;" data-target="#tab__download--completed" class="tab__nav__item" data-toggle="tab">completed</a>
+              </div>
+            </nav>
+            <div class="tab__content">
+              <div id="tab__download--loading" class="tab__content__pane show">
+                <div class="app__files">
+                  <div class="">
+                    <div class="app__files__wrapper">
+                      <table class="">
+                        <thead>
+                          <tr class="">
+                            <th></th>
+                            <th>user</th>
+                            <th>filename</th>
+                            <th>size(KB)</th>
+                            <th>progress</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody class="">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="tab__download--completed" class="tab__content__pane">
+                <div class="app__files">
+                  <div class="">
+                    <div class="app__files__wrapper">
+                      <table class="">
+                        <thead>
+                          <tr class="">
+                            <th>user</th>
+                            <th>filename</th>
+                            <th>size(KB)</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody class="">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="debug">
+      <a href="javascript:;" class="btn btn--primary" id="ping-client">测试连接状态</a>
+      <a href="javascript:;" class="btn btn--primary" id="ping-clear">清空统计数据</a>
+      <a href="javascript:;" class="btn btn--primary" id="ping-refresh">刷新页面</a>
+      <a href="javascript:;" class="btn btn--primary btn--capture" id="capture">截图</a>
+      <a href="javascript:;" class="btn btn--primary" id="debug-opendevtools">打开控制台</a>
+      <span>
+        &nbsp;发送&nbsp;
+        <span id="client1__send-count">0</span>&nbsp;接收&nbsp;
+        <span id="client1__receive-count">0</span>
+      </span>
+    </div>
+
+    <div id="app__file-form" class="hide">
+      <input type="file" id="app__file-input" multiple>
+    </div>
+
+    <div id="app__user-avatar-form" class="hide">
+      <input type="file" id="app__user-avatar-input">
+    </div>
+
+    <div id="app__folder-form" class="hide">
+      <input type="file" id="app__folder-input" webkitdirectory />
+    </div>
+
+  </div>
+
+  <div class="modals">
+    <div class="modal-mask v-hide">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <a href="javascript:;" class="modal__close">
+            <i class="iconfont icon-close"></i>
+          </a>
+          <div class="modal__hd">
+          </div>
+
+          <div class="modal__bd">
+          </div>
+
+          <div class="modal__ft">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal-wrapper" id="modal--top-msg" style="top: -50px;">
+      <div class="modal-container">
+        <div class="modal__bd">
+          <div class="content">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal-mask v-hide" id="modal--loading">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <div class="modal__bd">
+            <div style="padding: 10px; text-align: center;">
+              Connecting...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-mask v-hide" id="modal--add-user">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <a href="javascript:;" class="modal__close">
+            <i class="iconfont icon-close"></i>
+          </a>
+
+          <div class="modal__bd">
+            <div style="padding: 20px; width: 390px; padding-top: 39px;">
+
+              <div class="form-group">
+                <span class="form-group__addon">Address:</span>
+                <input type="text" class="form-group__item search-public-key" placeholder="add user">
+              </div>
+
+              <a href="javascript:;" class="btn btn--primary btn--block" id="btn--control-add-user">Add
+                Contact</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-mask v-hide" id="modal--add-members">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <a href="javascript:;" class="modal__close">
+            <i class="iconfont icon-close"></i>
+          </a>
+
+          <div class="modal__bd">
+          </div>
+
+          <div class="modal__ft">
+            <a href="javascript:;" class="btn btn--primary" id="btn--control-add-members">Add</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal-mask v-hide" id="modal--show-image">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <a href="javascript:;" class="modal__close">
+            <i class="iconfont icon-close"></i>
+          </a>
+          <div class="modal__bd">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal-mask v-hide" id="modal--user-card">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <a href="javascript:;" class="modal__close">
+            <i class="iconfont icon-close"></i>
+          </a>
+          <div class="modal__bd">
+            <div class="user-card__main">
+              <div class="info__lf">
+                <h4 class="nickname"></h4>
+                <div class="">
+                  <span class="publickey"></span>
+                </div>
+              </div>
+              <div class="info__rt">
+                <img src="" alt="" class="avatar">
+              </div>
+            </div>
+            <div class="user-card__btns">
+              <a href="javacript:;" class="add">
+                <i class="iconfont icon-plus"></i>
+              </a>
+              <a href="javacript:;" class="send">
+                <i class="iconfont icon-message"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal-mask v-hide" id="modal--group-info">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <a href="javascript:;" class="modal__close">
+            <i class="iconfont icon-close"></i>
+          </a>
+          <div class="modal__hd">
+            Group Info
+          </div>
+          <div class="modal__bd">
+            <div class="form-group">
+              <span class="form-group__addon">title:</span>
+              <input type="text" class="form-group__item" name="title" autocomplete="off" readonly>
+            </div>
+          </div>
+
+          <div class="modal__ft">
+            <a href="javascript:;" class="btn btn--link btn--leave-group">Leave Group</a>
+            <a href="javascript:;" class="btn btn--link btn--group-edit">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal-mask v-hide" id="modal--user-info">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <a href="javascript:;" class="modal__close">
+            <i class="iconfont icon-close"></i>
+          </a>
+          <div class="modal__hd">
+            User Info
+          </div>
+          <div class="modal__bd">
+            <div class="form-group form-group--avatar hide">
+              <span class="form-group__addon" style="line-height: 48px;">Avatar:</span>
+              <img src="" class="avatar">
+            </div>
+            <div class="form-group">
+              <span class="form-group__addon">Nickname:</span>
+              <input type="text" class="form-group__item" name="nickname" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="modal__ft">
+            <a href="javascript:;" class="btn btn--primary btn--block btn--save-user">Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
